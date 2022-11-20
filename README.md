@@ -7,13 +7,7 @@ This package helps you to connect to vendors. Yups, all in one!
 ### Composer Installation
 
 ```plaintext
-composer require officialxviid/vendors
-```
-
-### NPM Installation
-
-```plaintext
-npm i @officialxviid/vendors
+composer require officialxviid/disgester
 ```
 
 ## License
