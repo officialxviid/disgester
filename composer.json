@@ -12,6 +12,15 @@
             "role": "Developer"
         }
     ],
+    "keywords": [
+        "collective",
+        "vendors",
+        "plugins",
+        "libraries",
+        "js",
+        "css",
+        "allinone"
+    ],
     "funding": [
         {
             "type": "patreon",
