@@ -1,17 +1,21 @@
-Vendors
+## Vendors
 
 This package helps you to connect to vendors. Yups, all in one!
 
-Installation
+## Installation
 
-Composer Installation
+### Composer Installation
 
+```plaintext
 composer require officialxviid/vendors
+```
 
-NPM Installation
+### NPM Installation
 
+```plaintext
 npm i @officialxviid/vendors
+```
 
-License
+## License
 
 MIT License
