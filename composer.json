@@ -1,0 +1,37 @@
+{
+    "name": "officialxviid/disgester",
+    "type": "library",
+    "description": "Collect all vendors in one package",
+    "homepage": "https://github.com/officialxviid/disgester",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "XVIID Developer",
+            "email": "developer@xviid.net",
+            "homepage": "https://xviid.net",
+            "role": "Developer"
+        }
+    ],
+    "funding": [
+        {
+            "type": "patreon",
+            "url": "https://www.patreon.com/xviid"
+        },
+        {
+            "type": "opencollective",
+            "url": "https://opencollective.com/xviid"
+        },
+        {
+            "type": "ko-fi",
+            "url": "https://ko-fi.com/xviid"
+        },
+        {
+            "type": "other",
+            "url": "https://paypal.me/xviid"
+        }
+    ],
+    "support": {
+        "email": "support@xviid.net",
+        "source": "https://github.com/officialxviid/disgester"
+    }
+}
