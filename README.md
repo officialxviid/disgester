@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://animejs.com">
+  <a href="https://github.com/officialxviid/disgester">
     <img src="https://github.com/officialxviid/disgester/blob/master/logo-horizontal.png?raw=true" width="250"/>
   </a>
   <br>
