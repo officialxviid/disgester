@@ -20,7 +20,7 @@
 </p>
 
 <blockquote align="center">
-Digester is taken from the name of an ant colony which means mutual symbiosis.
+Digester is taken from the name of an ant colony (<i>Camponotus schmitzi</i>) which means mutual symbiosis.
 You can easily manage bundles in your application using this package. Simply run the command <b>composer require officialxviid/disgester</b>, and set your bundle.
 </blockquote>
 
