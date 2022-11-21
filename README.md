@@ -7,7 +7,6 @@
 </h1>
 
 <h4 align="center">Collect all vendors in one package</h4>
-<h5 align="center">Powered by <a href="https://xviid.net" target="_blank">XVIID</a></h5>
 
 <p align="center">
   <a href="https://github.com/officialxviid/disgester/releases" rel="nofollow">
@@ -28,3 +27,5 @@ You can easily manage bundles in your application using this package. Simply run
 <p align="center">
   <a href="https://github.com/officialxviid/disgester/wiki/Getting-Started">Getting started</a>&nbsp;|&nbsp;<a href="https://github.com/officialxviid/disgester/wiki/Plugin-Lists">Plugins</a>&nbsp;|&nbsp;<a href="https://github.com/officialxviid/disgester/wiki/Template-Lists">Templates</a>&nbsp;|&nbsp;<a href="https://github.com/officialxviid/disgester/blob/master/LICENSE">License</a>
 </p>
+
+<h5 align="center">Powered by <a href="https://xviid.net" target="_blank">XVIID</a></h5>
