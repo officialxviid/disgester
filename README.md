@@ -6,7 +6,7 @@
   Disgester
 </h1>
 
-<h4 align="center">Collect all vendors in one package</h4>
+<h4 align="center">Collect all in one package</h4>
 
 <p align="center">
   <a href="https://github.com/officialxviid/disgester/releases" rel="nofollow">
