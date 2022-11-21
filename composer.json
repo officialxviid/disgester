@@ -1,7 +1,7 @@
 {
     "name": "officialxviid/disgester",
     "type": "library",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Collect all vendors in one package",
     "homepage": "https://github.com/officialxviid/disgester",
     "license": "MIT",
@@ -20,7 +20,9 @@
         "libraries",
         "js",
         "css",
-        "all-in-one"
+        "all-in-one",
+        "templates",
+        "templates-html"
     ],
     "funding": [
         {
