@@ -1,5 +1,6 @@
 {
     "name": "officialxviid/disgester",
+    "version": "1.0.0",
     "type": "library",
     "description": "Collect all vendors in one package",
     "homepage": "https://github.com/officialxviid/disgester",
