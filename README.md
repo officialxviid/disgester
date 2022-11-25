@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://github.com/officialxviid/disgester">
-    <img src="https://github.com/officialxviid/disgester/blob/master/logo-horizontal.png?raw=true" width="250"/>
+    <img src="https://raw.githubusercontent.com/officialxviid/officialxviid/main/assets/disgester/logo-full.png" width="250"/>
   </a>
   <br>
   Disgester
