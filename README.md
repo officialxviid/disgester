@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/officialxviid/disgester/releases" rel="nofollow">
-    <img src="https://img.shields.io/badge/version-1.0.4-brightgreen" alt="Last Version" data-canonical-src="https://img.shields.io/badge/version-1.0.4-brightgreen" style="max-width:100%;">
+    <img src="https://img.shields.io/badge/version-1.0.5-brightgreen" alt="Last Version" data-canonical-src="https://img.shields.io/badge/version-1.0.5-brightgreen" style="max-width:100%;">
   </a>
   <a href="https://github.com/officialxviid/disgester/wiki/Vendors" rel="nofollow">
     <img src="https://img.shields.io/badge/vendors-84-orange" alt="Vendors" data-canonical-src="https://img.shields.io/badge/vendors-84-orange" style="max-width:100%;">
