@@ -1,0 +1,1056 @@
+{
+    "$ref": "#/definitions/ColorSchema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "AssetPack": {
+            "additionalProperties": false,
+            "properties": {
+                "brandName": {
+                    "type": "string"
+                },
+                "palettes": {
+                    "items": {
+                        "$ref": "#/definitions/Palette"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "brandName",
+                "palettes"
+            ],
+            "type": "object"
+        },
+        "CMYKValue": {
+            "additionalProperties": false,
+            "properties": {
+                "c": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "k": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "m": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "y": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "c",
+                "m",
+                "y",
+                "k"
+            ],
+            "type": "object"
+        },
+        "CategoricalPalette": {
+            "additionalProperties": false,
+            "properties": {
+                "colorScheme": {
+                    "$ref": "#/definitions/ColorSchemeType"
+                },
+                "colors": {
+                    "items": {
+                        "$ref": "#/definitions/Color"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "semantic": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "const": "categorical",
+                    "type": "string"
+                },
+                "usage": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "colors",
+                "name",
+                "semantic",
+                "type"
+            ],
+            "type": "object"
+        },
+        "Color": {
+            "anyOf": [
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "const": "hsl",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/HSLValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "const": "hsv",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/HSVValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "const": "hsi",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/HSIValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "const": "rgb",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/RGBValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "const": "rgba",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/RGBAValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "const": "lab",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/LABValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "const": "lch",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/LCHValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "const": "cmyk",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/CMYKValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                }
+            ]
+        },
+        "ColorSchema": {
+            "$ref": "#/definitions/AssetPack"
+        },
+        "ColorSchemeType": {
+            "enum": [
+                "monochromatic",
+                "complementary",
+                "split-complementary",
+                "achromatic",
+                "analogous",
+                "triadic",
+                "tetradic",
+                "polychromatic",
+                "customized"
+            ],
+            "type": "string"
+        },
+        "ContinuousColor": {
+            "anyOf": [
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        "model": {
+                            "const": "hsl",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/HSLValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        "model": {
+                            "const": "hsv",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/HSVValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        "model": {
+                            "const": "hsi",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/HSIValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        "model": {
+                            "const": "rgb",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/RGBValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        "model": {
+                            "const": "rgba",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/RGBAValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        "model": {
+                            "const": "lab",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/LABValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        "model": {
+                            "const": "lch",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/LCHValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "location": {
+                            "maximum": 1,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        "model": {
+                            "const": "cmyk",
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "undertone": {
+                            "$ref": "#/definitions/Undertone"
+                        },
+                        "usage": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "value": {
+                            "$ref": "#/definitions/CMYKValue"
+                        }
+                    },
+                    "required": [
+                        "model",
+                        "value"
+                    ],
+                    "type": "object"
+                }
+            ]
+        },
+        "ContinuousScalePalette": {
+            "additionalProperties": false,
+            "properties": {
+                "colorScheme": {
+                    "$ref": "#/definitions/ColorSchemeType"
+                },
+                "colors": {
+                    "items": {
+                        "$ref": "#/definitions/ContinuousColor"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "semantic": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "const": "continuous-scale",
+                    "type": "string"
+                },
+                "usage": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "colors",
+                "name",
+                "semantic",
+                "type"
+            ],
+            "type": "object"
+        },
+        "DiscreteScalePalette": {
+            "additionalProperties": false,
+            "properties": {
+                "colorScheme": {
+                    "$ref": "#/definitions/ColorSchemeType"
+                },
+                "colors": {
+                    "items": {
+                        "$ref": "#/definitions/Color"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "semantic": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "const": "discrete-scale",
+                    "type": "string"
+                },
+                "usage": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "colors",
+                "name",
+                "semantic",
+                "type"
+            ],
+            "type": "object"
+        },
+        "HSIValue": {
+            "additionalProperties": false,
+            "properties": {
+                "h": {
+                    "maximum": 360,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "i": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "s": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "h",
+                "s",
+                "i"
+            ],
+            "type": "object"
+        },
+        "HSLValue": {
+            "additionalProperties": false,
+            "properties": {
+                "h": {
+                    "maximum": 360,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "l": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "s": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "h",
+                "s",
+                "l"
+            ],
+            "type": "object"
+        },
+        "HSVValue": {
+            "additionalProperties": false,
+            "properties": {
+                "h": {
+                    "maximum": 360,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "s": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "v": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "h",
+                "s",
+                "v"
+            ],
+            "type": "object"
+        },
+        "LABValue": {
+            "additionalProperties": false,
+            "properties": {
+                "a": {
+                    "maximum": 98.254,
+                    "minimum": -86.185,
+                    "type": "number"
+                },
+                "b": {
+                    "maximum": 94.482,
+                    "minimum": -107.863,
+                    "type": "number"
+                },
+                "l": {
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "l",
+                "a",
+                "b"
+            ],
+            "type": "object"
+        },
+        "LCHValue": {
+            "additionalProperties": false,
+            "properties": {
+                "c": {
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "h": {
+                    "maximum": 360,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "l": {
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "l",
+                "c",
+                "h"
+            ],
+            "type": "object"
+        },
+        "MatrixPalette": {
+            "additionalProperties": false,
+            "properties": {
+                "colorScheme": {
+                    "$ref": "#/definitions/ColorSchemeType"
+                },
+                "colors": {
+                    "items": {
+                        "items": {
+                            "$ref": "#/definitions/Color"
+                        },
+                        "type": "array"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "origin": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "x": {
+                            "items": {
+                                "$ref": "#/definitions/Color"
+                            },
+                            "type": "array"
+                        },
+                        "y": {
+                            "items": {
+                                "$ref": "#/definitions/Color"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "x",
+                        "y"
+                    ],
+                    "type": "object"
+                },
+                "semantic": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "const": "matrix",
+                    "type": "string"
+                },
+                "usage": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "colors",
+                "name",
+                "origin",
+                "semantic",
+                "type"
+            ],
+            "type": "object"
+        },
+        "Palette": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/CategoricalPalette"
+                },
+                {
+                    "$ref": "#/definitions/DiscreteScalePalette"
+                },
+                {
+                    "$ref": "#/definitions/ContinuousScalePalette"
+                },
+                {
+                    "$ref": "#/definitions/MatrixPalette"
+                }
+            ]
+        },
+        "RGBAValue": {
+            "additionalProperties": false,
+            "properties": {
+                "a": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "b": {
+                    "maximum": 255,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "g": {
+                    "maximum": 255,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "r": {
+                    "maximum": 255,
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "r",
+                "g",
+                "b",
+                "a"
+            ],
+            "type": "object"
+        },
+        "RGBValue": {
+            "additionalProperties": false,
+            "properties": {
+                "b": {
+                    "maximum": 255,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "g": {
+                    "maximum": 255,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "r": {
+                    "maximum": 255,
+                    "minimum": 0,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "r",
+                "g",
+                "b"
+            ],
+            "type": "object"
+        },
+        "Undertone": {
+            "enum": [
+                "warm",
+                "neutral",
+                "cool"
+            ],
+            "type": "string"
+        }
+    }
+}

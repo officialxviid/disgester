@@ -1,0 +1,115 @@
+import { SEPARABLE_BLEND_MODES } from '../../constant';
+import { colorToArray } from '../colorConversion';
+const multiply = (top, bottom) => (top * bottom) / 255;
+const screen = (top, bottom) => top + bottom - (top * bottom) / 255;
+const hardLight = (top, bottom) => top < 128 ? multiply(2 * top, bottom) : screen(2 * top - 255, bottom);
+const separableBlendFunc = {
+    /** w3c */
+    normal: (top) => top,
+    darken: (top, bottom) => Math.min(top, bottom),
+    multiply,
+    colorBurn: (top, bottom) => {
+        if (top === 0)
+            return 0;
+        return Math.max(0, 255 * (1 - (255 - bottom) / top));
+    },
+    lighten: (top, bottom) => Math.max(top, bottom),
+    screen,
+    colorDodge: (top, bottom) => {
+        if (top === 255)
+            return 255;
+        return Math.min(255, 255 * (bottom / (255 - top)));
+    },
+    overlay: (top, bottom) => hardLight(bottom, top),
+    softLight: (top, bottom) => {
+        if (top < 128) {
+            return bottom - (1 - (2 * top) / 255) * bottom * (1 - bottom / 255);
+        }
+        const D = bottom < 64 ? ((16 * (bottom / 255) - 12) * (bottom / 255) + 4) * (bottom / 255) : Math.sqrt(bottom / 255);
+        return bottom + 255 * ((2 * top) / 255 - 1) * (D - bottom / 255);
+    },
+    hardLight,
+    difference: (top, bottom) => Math.abs(top - bottom),
+    exclusion: (top, bottom) => top + bottom - (2 * top * bottom) / 255,
+    /** photoshop */
+    linearBurn: (top, bottom) => Math.max(top + bottom - 255, 0),
+    linearDodge: (top, bottom) => Math.min(255, top + bottom),
+    linearLight: (top, bottom) => Math.max(bottom + 2 * top - 255, 0),
+    vividLight: (top, bottom) => top < 128 ? 255 * (1 - (1 - bottom / 255) / ((2 * top) / 255)) : 255 * (bottom / 2 / (255 - top)),
+    pinLight: (top, bottom) => (top < 128 ? Math.min(bottom, 2 * top) : Math.max(bottom, 2 * top - 255)),
+};
+const lum = (rgb) => {
+    return 0.3 * rgb[0] + 0.58 * rgb[1] + 0.11 * rgb[2];
+};
+const clipColor = (rgb) => {
+    const l = lum(rgb);
+    const min = Math.min(...rgb);
+    const max = Math.max(...rgb);
+    let color = [...rgb];
+    if (min < 0) {
+        color = color.map((value) => l + ((value - l) * l) / (l - min));
+    }
+    if (max > 255) {
+        color = color.map((value) => l + ((value - l) * (255 - l)) / (max - l));
+    }
+    return color;
+};
+const setLum = (rgb, l) => {
+    const d = l - lum(rgb);
+    return clipColor(rgb.map((value) => value + d));
+};
+const sat = (rgb) => {
+    return Math.max(...rgb) - Math.min(...rgb);
+};
+const setSat = (rgb, s) => {
+    const arr = rgb.map((value, index) => ({ value, index }));
+    arr.sort((a, b) => a.value - b.value);
+    const minIndex = arr[0].index;
+    const midIndex = arr[1].index;
+    const maxIndex = arr[2].index;
+    const color = [...rgb];
+    if (color[maxIndex] > color[minIndex]) {
+        color[midIndex] = ((color[midIndex] - color[minIndex]) * s) / (color[maxIndex] - color[minIndex]);
+        color[maxIndex] = s;
+    }
+    else {
+        color[midIndex] = 0;
+        color[maxIndex] = 0;
+    }
+    color[minIndex] = 0;
+    return color;
+};
+const nonSeparableBlendFunc = {
+    hue: (top, bottom) => setLum(setSat(top, sat(bottom)), lum(bottom)),
+    saturation: (top, bottom) => setLum(setSat(bottom, sat(top)), lum(bottom)),
+    color: (top, bottom) => setLum(top, lum(bottom)),
+    luminosity: (top, bottom) => setLum(bottom, lum(top)),
+};
+export const colorBlend = (colorTop, colorBottom, mode = 'normal') => {
+    const [r1, g1, b1, a1] = colorToArray(colorTop, 'rgba');
+    const [r2, g2, b2, a2] = colorToArray(colorBottom, 'rgba');
+    const rgb1 = [r1, g1, b1];
+    const rgb2 = [r2, g2, b2];
+    let blendRgb;
+    if (SEPARABLE_BLEND_MODES.includes(mode)) {
+        const func = separableBlendFunc[mode];
+        blendRgb = rgb1.map((num1, index) => Math.floor(func(num1, rgb2[index])));
+    }
+    else {
+        blendRgb = nonSeparableBlendFunc[mode](rgb1, rgb2);
+    }
+    const a = a1 + a2 * (1 - a1);
+    const r = Math.round((a1 * (1 - a2) * r1 + a1 * a2 * blendRgb[0] + (1 - a1) * a2 * r2) / a);
+    const g = Math.round((a1 * (1 - a2) * g1 + a1 * a2 * blendRgb[1] + (1 - a1) * a2 * g2) / a);
+    const b = Math.round((a1 * (1 - a2) * b1 + a1 * a2 * blendRgb[2] + (1 - a1) * a2 * b2) / a);
+    if (a === 1)
+        return {
+            model: 'rgb',
+            value: { r, g, b },
+        };
+    return {
+        model: 'rgba',
+        value: { r, g, b, a },
+    };
+};
+//# sourceMappingURL=colorBlend.js.map
