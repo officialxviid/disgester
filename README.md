@@ -10,10 +10,10 @@
 
 <p align="center">
   <a href="https://github.com/officialxviid/disgester/releases" rel="nofollow">
-    <img src="https://img.shields.io/badge/version-1.0.13-brightgreen" alt="Last Version" data-canonical-src="https://img.shields.io/badge/version-1.0.13-brightgreen" style="max-width:100%;">
+    <img src="https://img.shields.io/badge/version-1.0.14-brightgreen" alt="Last Version" data-canonical-src="https://img.shields.io/badge/version-1.0.14-brightgreen" style="max-width:100%;">
   </a>
   <a href="https://github.com/officialxviid/disgester/wiki/Vendors" rel="nofollow">
-    <img src="https://img.shields.io/badge/vendors-96-orange" alt="Vendors" data-canonical-src="https://img.shields.io/badge/vendors-96-orange" style="max-width:100%;">
+    <img src="https://img.shields.io/badge/vendors-97-orange" alt="Vendors" data-canonical-src="https://img.shields.io/badge/vendors-97-orange" style="max-width:100%;">
   </a>
   <a href="https://github.com/officialxviid/disgester/blob/master/LICENSE" rel="nofollow">
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" data-canonical-src="https://img.shields.io/badge/license-MIT-blue" style="max-width:100%;">
